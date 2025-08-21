@@ -39,6 +39,40 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Buttons />
     </>
+  );
+}
+
+function Buttons() {
+  return (
+    <div className="buttons flex flex-col gap-5 m-4">
+      <Button>
+        <Plus />
+        <span className="hidden md:inline">추가 하기</span>
+      </Button>
+      <Button variant="destructive">
+        <X />
+        <span className="hidden md:inline">삭제하기</span>
+      </Button>
+      <Button variant="secondary">
+        <Check />
+        <span className="hidden md:inline">수정완료</span>
+      </Button>
+      <Button
+        variant="flat"
+        size="icon"
+        className="bg-slate-200 text-slate-500 "
+      >
+        <Plus />
+      </Button>
+      <Button
+        variant="flat"
+        size="icon"
+        className="bg-[#0F172A80] text-white border-solid border-2 border-slate-900"
+      >
+        <Pencil />
+      </Button>
+    </div>
   );
 }
