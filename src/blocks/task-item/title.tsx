@@ -10,5 +10,5 @@ export default function TaskItemTitle(props: ItemDetail) {
         <span className="underline font-bold">{name}</span>
       </div>
     </div>
-  )
+  );
 }

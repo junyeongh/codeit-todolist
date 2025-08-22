@@ -17,5 +17,5 @@ export default function TaskInput() {
         </Button>
       </form>
     </div>
-  )
+  );
 }

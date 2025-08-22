@@ -6,7 +6,9 @@ import type { ItemDetail } from "@/types";
 
 export default function ItemPage({ params }: { params: { itemId: string } }) {
   const itemId = parseInt(params.itemId, 10);
-  const task: ItemDetail | undefined = mockDetailedItems.find(item => item.id === itemId);
+  const task: ItemDetail | undefined = mockDetailedItems.find(
+    (item) => item.id === itemId,
+  );
 
   if (!task) return null;
 
@@ -16,5 +18,5 @@ export default function ItemPage({ params }: { params: { itemId: string } }) {
       <TaskItemInput {...task} />
       <TaskItemButtons {...task} />
     </div>
-  )
+  );
 }

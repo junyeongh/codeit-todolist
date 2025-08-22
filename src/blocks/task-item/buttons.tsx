@@ -1,6 +1,6 @@
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ItemDetail } from "@/types";
+import type { ItemDetail } from "@/types";
 
 export default function TaskItemButtons(props: ItemDetail) {
   return (
@@ -14,5 +14,5 @@ export default function TaskItemButtons(props: ItemDetail) {
         <span>삭제하기</span>
       </Button>
     </div>
-  )
+  );
 }
