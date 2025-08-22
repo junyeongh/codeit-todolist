@@ -1,7 +1,8 @@
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ItemDetail } from "@/types";
 
-export default function TaskItemButtons() {
+export default function TaskItemButtons(props: ItemDetail) {
   return (
     <div className="px-[102px] pt-6 justify-end flex flex-row gap-5">
       <Button variant="secondary">
