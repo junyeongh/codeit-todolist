@@ -10,15 +10,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: // 추가하기
-          "border-solid border-2 border-slate-900 bg-slate-200 text-slate-900 active:bg-violet-600 active:text-white",
+          "sm:w-[164px] w-[56px] border-solid border-2 border-slate-900 bg-slate-200 text-slate-900 active:bg-violet-600 active:text-white",
         secondary: // 수정 완료
-          "border-solid border-2 border-slate-900 bg-slate-200 text-slate-900 active:bg-lime-300",
+          "sm:w-[164px] border-solid border-2 border-slate-900 bg-slate-200 text-slate-900 active:bg-lime-300",
         destructive: // 삭제하기
-          "border-solid border-2 border-slate-900 bg-rose-500 text-slate-900",
+          "sm:w-[164px] border-solid border-2 border-slate-900 bg-rose-500 text-slate-900",
         flat: "shadow-none", // 평면 버튼
       },
       size: {
-        default: "h-14 md:w-[164px] w-[56px] rounded-3xl has-[>svg]:px-3",
+        default: "h-14 rounded-3xl has-[>svg]:px-3",
         icon: "size-16 rounded-full",
       },
     },
