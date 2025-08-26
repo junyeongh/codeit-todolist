@@ -1,22 +1,25 @@
-"use client"
+"use client";
 
 import { useActionState, useEffect } from "react";
-import { addNewTaskAction } from "@/actions/add-new-task.action";
+import { addNewTask } from "@/actions/add-new-task";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
 export default function TaskInput() {
-  const [state, formAction, isPending] = useActionState(addNewTaskAction, null);
+  const [state, formAction, isPending] = useActionState(addNewTask, null);
 
   useEffect(() => {
     if (state && !state.success) {
       alert(state.error);
     }
-  }, [state])
+  }, [state]);
 
   return (
     <div className="add-task">
-      <form className="top-section flex flex-row gap-x-8 mt-6" action={formAction}>
+      <form
+        className="top-section flex flex-row gap-x-8 mt-6"
+        action={formAction}
+      >
         <div className="flex-grow">
           <input
             name="name"
