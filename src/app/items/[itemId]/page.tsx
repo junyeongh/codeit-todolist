@@ -2,7 +2,7 @@ import TaskItemInput from "@/blocks/task-item/input";
 import TaskItemButtons from "@/blocks/task-item/buttons";
 import TaskItemTitle from "@/blocks/task-item/title";
 import type { ItemDetail } from "@/types";
-import { updateTaskAction } from "@/actions/update-task.action";
+import { updateTask } from "@/actions/update-task";
 
 export default async function ItemPage({
   params,
@@ -15,17 +15,22 @@ export default async function ItemPage({
   const response = await fetch(`${API_SERVER_URL}/items/${itemId}`);
 
   const task: ItemDetail | undefined = await response.json();
-  console.log(task);
 
   if (!task) return null;
 
+  const updateTaskActionWithId = updateTask.bind(null, itemId);
+
   return (
-    <form action={updateTaskAction}>
+    <div className="xl:px-90">
       <div className="bg-white flex flex-col h-[calc(100vh-60px)]">
-        <TaskItemTitle {...task} />
-        <TaskItemInput {...task} />
-        <TaskItemButtons {...task} />
+        <div className="lg:px-[102px] px-6">
+          <form action={updateTaskActionWithId}>
+            <TaskItemTitle {...task} />
+            <TaskItemInput {...task} />
+            <TaskItemButtons {...task} />
+          </form>
+        </div>
       </div>
-    </form>
+    </div>
   );
 }

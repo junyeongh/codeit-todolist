@@ -9,8 +9,8 @@ import { useState } from "react";
 
 export default function TaskItemTitle(props: ItemDetail) {
   const { id, name, isCompleted } = props;
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const handleClickCompletion = async () => {
     if (isLoading) return;
 
@@ -26,7 +26,7 @@ export default function TaskItemTitle(props: ItemDetail) {
   };
 
   return (
-    <div className="px-[102px] pt-6">
+    <div className="pb-6">
       <div className="border-solid border-2 border-slate-900 flex flex-row justify-center items-center gap-4 rounded-[27px] h-12.5 bg-white">
         <button
           type="button"
@@ -56,7 +56,6 @@ export default function TaskItemTitle(props: ItemDetail) {
         />
       </div>
       <input name="id" value={id} hidden readOnly />
-      <input name="isCompleted" value={String(isCompleted)} hidden readOnly />
     </div>
   );
 }
