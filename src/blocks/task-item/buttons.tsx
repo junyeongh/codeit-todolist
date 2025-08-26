@@ -1,11 +1,11 @@
 "use client";
 
 import { Check, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import type { ItemDetail } from "@/types";
 import { useRouter } from "next/navigation";
-import { handleDeleteMemo } from "@/servers/taskService";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { handleDeleteMemo } from "@/servers/taskService";
+import type { ItemDetail } from "@/types";
 
 export default function TaskItemButtons(props: ItemDetail) {
   const { id } = props;

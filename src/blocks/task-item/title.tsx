@@ -1,16 +1,17 @@
 "use client";
 
-import { handleCompletionToggle } from "@/servers/taskService";
-import type { ItemDetail } from "@/types";
 import clsx from "clsx";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { handleCompletionToggle } from "@/servers/taskService";
+import type { ItemDetail } from "@/types";
 
 export default function TaskItemTitle(props: ItemDetail) {
   const { id, name, isCompleted } = props;
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
   const handleClickCompletion = async () => {
     if (isLoading) return;
 

@@ -1,8 +1,8 @@
-import TaskItemInput from "@/blocks/task-item/input";
+import { updateTask } from "@/actions/update-task";
 import TaskItemButtons from "@/blocks/task-item/buttons";
+import TaskItemInput from "@/blocks/task-item/input";
 import TaskItemTitle from "@/blocks/task-item/title";
 import type { ItemDetail } from "@/types";
-import { updateTask } from "@/actions/update-task";
 
 export default async function ItemPage({
   params,
@@ -11,6 +11,7 @@ export default async function ItemPage({
 }) {
   const { itemId } = await params;
 
+  // fetch task detail for page components
   const API_SERVER_URL = `${process.env.NEXT_PUBLIC_TODOLIST_API_SERVER_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}`;
   const response = await fetch(`${API_SERVER_URL}/items/${itemId}`);
 
@@ -18,6 +19,7 @@ export default async function ItemPage({
 
   if (!task) return null;
 
+  // bind updateTask action with itemId for server action to update form data
   const updateTaskActionWithId = updateTask.bind(null, itemId);
 
   return (

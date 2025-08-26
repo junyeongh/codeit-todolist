@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import type { ItemDetail } from "@/types";
 import Image from "next/image";
-import { useRef } from "react";
-import { handleUpdateImageUrl } from "@/servers/taskService";
 import { useRouter } from "next/navigation";
+import { useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { handleUpdateImageUrl } from "@/servers/taskService";
+import type { ItemDetail } from "@/types";
 
 const TaskItemInputImage = ({
   id,

@@ -1,12 +1,12 @@
 "use client";
 
-import { handleCompletionToggle } from "@/servers/taskService";
-import type { ItemDetail } from "@/types";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { handleCompletionToggle } from "@/servers/taskService";
+import type { ItemDetail } from "@/types";
 
 export default function TaskItem(props: ItemDetail) {
   const { id, name, isCompleted } = props;
@@ -14,6 +14,7 @@ export default function TaskItem(props: ItemDetail) {
   const router = useRouter();
 
   const handleClickCompletion = async (e: React.MouseEvent) => {
+    // Prevent default link behavior from <Link>
     e.preventDefault();
     e.stopPropagation();
 

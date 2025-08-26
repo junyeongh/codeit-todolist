@@ -1,9 +1,9 @@
 "use client";
 
+import { Plus } from "lucide-react";
 import { useActionState, useEffect } from "react";
 import { addNewTask } from "@/actions/add-new-task";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 
 export default function TaskInput() {
   const [state, formAction, isPending] = useActionState(addNewTask, null);

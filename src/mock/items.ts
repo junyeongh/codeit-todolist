@@ -1,4 +1,4 @@
-import type { ItemDetail, Item } from "@/types";
+import type { Item, ItemDetail } from "@/types";
 
 export const mockDetailedItems: ItemDetail[] = [
   {
