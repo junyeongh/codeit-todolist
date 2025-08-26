@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Pencil, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,6 @@ const TaskItemInputImage = ({ imageUrl }: { imageUrl: string | undefined }) => {
     <div className="relative flex flex-row justify-center">
       {hasImage ? (
         <div className="min-w-[375px] min-h-[300px]">
-          <input name="imageUrl" value={imageUrl} hidden readOnly />
           <Image
             src={imageUrl}
             alt="Placeholder"
@@ -91,7 +90,7 @@ const TaskItemInputText = ({ memo }: { memo: string | undefined }) => {
   );
 };
 
-export default async function TaskItemInput(props: ItemDetail) {
+export default function TaskItemInput(props: ItemDetail) {
   const { memo, imageUrl } = props;
 
   return (

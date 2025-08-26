@@ -7,22 +7,11 @@ import { useRouter } from "next/navigation";
 import { handleDeleteMemo } from "@/servers/taskService";
 
 export default function TaskItemButtons(props: ItemDetail) {
-  const { id, name, memo, imageUrl, isCompleted } = props;
+  const { id } = props;
   const router = useRouter();
 
-  // const onClickSubmit = () => {
-  //   handlePatchMemo({
-  //     id,
-  //     name,
-  //     memo,
-  //     imageUrl,
-  //     isCompleted,
-  //   });
-  //   router.push("/");
-  // };
-
-  const onClickDelete = () => {
-    handleDeleteMemo(id);
+  const onClickDelete = async () => {
+    await handleDeleteMemo(id);
     router.push("/");
   };
 

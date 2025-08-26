@@ -1,12 +1,19 @@
 import Image from "next/image";
 import TaskItem from "@/blocks/task/item";
-import { mockItems } from "@/mock/items";
+import type { Item } from "@/types";
 
-export default function TaskList() {
-  // fetch tasks from API (currently using mock data)
-  const todoTasks = mockItems.filter((item) => !item.isCompleted);
-  const doneTasks = mockItems.filter((item) => item.isCompleted);
+export default async function TaskList() {
+  // fetch tasks from API
+  const API_SERVER_URL = `${process.env.NEXT_PUBLIC_TODOLIST_API_SERVER_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}`;
+  const response = await fetch(`${API_SERVER_URL}/items`, {
+    next: { tags: ["task-items"] },
+  });
+  const items: Item[] = await response.json();
 
+  // filter tasks
+  const todoTasks = items.filter((item) => !item.isCompleted);
+  const doneTasks = items.filter((item) => item.isCompleted);
+  // check if there are tasks in each category
   const hasTodoTasks: boolean = todoTasks.length > 0;
   const hasDoneTasks: boolean = doneTasks.length > 0;
 
@@ -31,7 +38,7 @@ export default function TaskList() {
           )}
         </div>
       </div>
-      <div className="done-section grow-1 pt-12 md:pt-0">
+      <div className="done-section grow-1 pt-12 xl:pt-0">
         <Image src="/done.svg" alt="Done Icon" width={97} height={36} />
         <div className="done-tasks flex flex-col justify-center items-center">
           {hasDoneTasks ? (

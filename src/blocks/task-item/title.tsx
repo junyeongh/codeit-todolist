@@ -4,12 +4,25 @@ import { handleCompletionToggle } from "@/servers/taskService";
 import type { ItemDetail } from "@/types";
 import clsx from "clsx";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function TaskItemTitle(props: ItemDetail) {
   const { id, name, isCompleted } = props;
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const handleClickCompletion = async () => {
+    if (isLoading) return;
 
-  const handleClickCompletion = () => {
-    handleCompletionToggle(id, isCompleted);
+    setIsLoading(true);
+    try {
+      await handleCompletionToggle(id, isCompleted);
+      router.refresh();
+    } catch (error) {
+      console.error("Failed to toggle completion:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -21,17 +34,11 @@ export default function TaskItemTitle(props: ItemDetail) {
             "size-8 rounded-full ml-3",
             !isCompleted && "bg-yellow-50  border-2 border-slate-900",
             isCompleted &&
-            "bg-violet-600 line-through flex items-center justify-center",
+              "bg-violet-600 line-through flex items-center justify-center",
           )}
           onClick={handleClickCompletion}
+          disabled={isLoading}
         >
-          <input
-            type="checkbox"
-            name="isCompleted"
-            checked={isCompleted}
-            readOnly
-            onClick={handleClickCompletion}
-          />
           {isCompleted && (
             <Image
               src="/checked.svg"
@@ -48,7 +55,8 @@ export default function TaskItemTitle(props: ItemDetail) {
           name="name"
         />
       </div>
-      <input type="hidden" name="id" value={id} />
+      <input name="id" value={id} hidden readOnly />
+      <input name="isCompleted" value={String(isCompleted)} hidden readOnly />
     </div>
   );
 }

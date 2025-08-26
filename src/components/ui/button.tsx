@@ -9,11 +9,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: // 추가하기
+        // 추가하기
+        default:
           "sm:w-[164px] w-[56px] border-solid border-2 border-slate-900 bg-slate-200 text-slate-900 active:bg-violet-600 active:text-white",
-        secondary: // 수정 완료
+        // 수정 완료
+        secondary:
           "sm:w-[164px] border-solid border-2 border-slate-900 bg-slate-200 text-slate-900 active:bg-lime-300",
-        destructive: // 삭제하기
+        // 삭제하기
+        destructive:
           "sm:w-[164px] border-solid border-2 border-slate-900 bg-rose-500 text-slate-900",
         flat: "shadow-none", // 평면 버튼
       },
